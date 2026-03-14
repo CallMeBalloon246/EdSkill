@@ -15,11 +15,6 @@
 
   loadSkills();
 </script>
-<section>
-  <h2>Danh sách kỹ năng</h2>
-  <div id="skill-list"></div>
-</section>
-<script src="app.js"></script>
 <body>
   <header class="site-header">
     <div class="container nav">
@@ -176,7 +171,20 @@
       <a href="#lien-he" class="btn btn-primary">Bắt đầu ngay</a>
     </div>
   </section>
-
+  <section class="skills-section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Danh sách kỹ năng</h2>
+        <p>Các kỹ năng được lấy từ database Neon thông qua Netlify Functions.</p>
+      </div>
+  
+      <div id="skill-list" class="skills-grid">
+        <!-- JavaScript sẽ render card vào đây -->
+      </div>
+    </div>
+  </section>
+  
+  <script src="app.js"></script>
   <footer class="site-footer" id="lien-he">
     <div class="container footer-content">
       <div>
