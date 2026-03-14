@@ -1,13 +1,24 @@
-import { neon } from "@neondatabase/serverless";
-
-const sql = neon(process.env.DATABASE_URL);
+import { sql } from "./_lib/db.mjs";
 
 export default async () => {
   try {
     const rows = await sql`
-      select id, title, description
-      from skills
-      order by id desc
+      select
+        s.id,
+        s.title,
+        coalesce(s.detailed_description, s.description) as detailed_description,
+        s.delivery_score,
+        s.expertise_score,
+        s.session_duration_hours,
+        s.learning_modes,
+        s.learning_days,
+        u.full_name as teacher_name,
+        c.name as category_name
+      from skills s
+      join users u on u.id = s.user_id
+      left join skill_categories c on c.id = s.category_id
+      where s.status = 'active'
+      order by s.created_at desc
     `;
 
     return new Response(JSON.stringify(rows), {

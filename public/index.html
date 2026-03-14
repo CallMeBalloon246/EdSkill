@@ -8,12 +8,46 @@
 </head>
 <script>
   async function loadSkills() {
+  const box = document.getElementById("skill-list");
+  if (!box) return;
+
+  try {
     const res = await fetch("/.netlify/functions/list-skills");
     const data = await res.json();
-    console.log(data);
-  }
 
-  loadSkills();
+    const dayMap = {
+      monday: "Thứ 2",
+      tuesday: "Thứ 3",
+      wednesday: "Thứ 4",
+      thursday: "Thứ 5",
+      friday: "Thứ 6",
+      saturday: "Thứ 7"
+    };
+
+    if (!Array.isArray(data) || data.length === 0) {
+      box.innerHTML = "<p>Chưa có kỹ năng nào.</p>";
+      return;
+    }
+
+    box.innerHTML = data.map(item => `
+      <div class="skill-card">
+        <h3>${item.title}</h3>
+        <p>${item.detailed_description || ""}</p>
+        <div class="skill-meta">Người dạy: ${item.teacher_name}</div>
+        <div class="skill-meta">Danh mục: ${item.category_name || "Chưa phân loại"}</div>
+        <div class="skill-meta">Truyền đạt: ${item.delivery_score}/1000</div>
+        <div class="skill-meta">Chuyên môn: ${item.expertise_score}/1000</div>
+        <div class="skill-meta">Thời lượng: ${item.session_duration_hours}h</div>
+        <div class="skill-meta">Hình thức: ${(item.learning_modes || []).join(", ")}</div>
+        <div class="skill-meta">Ngày học: ${(item.learning_days || []).map(day => dayMap[day] || day).join(", ")}</div>
+      </div>
+    `).join("");
+  } catch (error) {
+    box.innerHTML = "<p>Không tải được dữ liệu kỹ năng.</p>";
+    console.error(error);
+  }
+}
+
 </script>
 <body>
   <header class="site-header">

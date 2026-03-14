@@ -16,11 +16,12 @@ export default async (req) => {
       select
         s.id,
         s.title,
-        s.description,
-        s.level,
-        s.learning_mode,
-        s.price_per_session,
-        s.exchange_only,
+        coalesce(s.detailed_description, s.description) as detailed_description,
+        s.delivery_score,
+        s.expertise_score,
+        s.session_duration_hours,
+        s.learning_modes,
+        s.learning_days,
         s.status,
         c.name as category_name
       from skills s

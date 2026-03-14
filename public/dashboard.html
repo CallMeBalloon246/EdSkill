@@ -1,57 +1,111 @@
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dashboard - EdSkill</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <main class="dashboard-page">
-    <div class="container">
-      <div class="dashboard-header">
-        <h1>Dashboard thành viên</h1>
-        <button id="logout-btn">Đăng xuất</button>
+<section class="dashboard-section">
+  <h2>Đăng kỹ năng mới</h2>
+
+  <form id="create-skill-form" class="skill-create-form">
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="category_id">Category ID</label>
+        <input type="number" name="category_id" id="category_id" placeholder="Ví dụ: 1" required />
       </div>
 
-      <section class="dashboard-section">
-        <h2>Thông tin tài khoản</h2>
-        <div id="me-box"></div>
-      </section>
-
-      <section class="dashboard-section">
-        <h2>Đăng kỹ năng mới</h2>
-        <form id="create-skill-form" class="auth-form">
-          <input type="number" name="category_id" placeholder="Category ID (ví dụ 1)" required />
-          <input type="text" name="title" placeholder="Tiêu đề kỹ năng" required />
-          <textarea name="description" placeholder="Mô tả kỹ năng" required></textarea>
-          <select name="level">
-            <option value="beginner">Beginner</option>
-            <option value="intermediate">Intermediate</option>
-            <option value="advanced">Advanced</option>
-          </select>
-          <select name="learning_mode">
-            <option value="online">Online</option>
-            <option value="offline">Offline</option>
-            <option value="both">Both</option>
-          </select>
-          <input type="number" name="price_per_session" placeholder="Giá / buổi" value="0" />
-          <label class="checkbox-row">
-            <input type="checkbox" name="exchange_only" checked />
-            Chỉ trao đổi kỹ năng
-          </label>
-          <button type="submit">Đăng kỹ năng</button>
-        </form>
-        <p id="create-skill-message"></p>
-      </section>
-
-      <section class="dashboard-section">
-        <h2>Kỹ năng của tôi</h2>
-        <div id="my-skills-box" class="skills-grid"></div>
-      </section>
+      <div class="form-group">
+        <label for="title">Tên kỹ năng</label>
+        <input type="text" name="title" id="title" placeholder="Ví dụ: Tiếng Anh giao tiếp cho người mới" required />
+      </div>
     </div>
-  </main>
 
-  <script src="app.js"></script>
-</body>
-</html>
+    <div class="form-group">
+      <label for="delivery_score">
+        Khả năng truyền đạt:
+        <span id="delivery_score_value">500</span>
+      </label>
+      <input
+        type="range"
+        id="delivery_score"
+        name="delivery_score"
+        min="0"
+        max="1000"
+        step="10"
+        value="500"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="expertise_score">
+        Kiến thức và kinh nghiệm chuyên môn:
+        <span id="expertise_score_value">500</span>
+      </label>
+      <input
+        type="range"
+        id="expertise_score"
+        name="expertise_score"
+        min="0"
+        max="1000"
+        step="10"
+        value="500"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="duration_slider">
+        Thời lượng dạy:
+        <span id="duration_value">1h</span>
+      </label>
+      <input
+        type="range"
+        id="duration_slider"
+        name="duration_slider"
+        min="0"
+        max="3"
+        step="1"
+        value="1"
+      />
+      <div class="range-hints">
+        <span>0.5h</span>
+        <span>1h</span>
+        <span>1.5h</span>
+        <span>2h</span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Hình thức học</label>
+      <div class="chip-group">
+        <label class="chip-option">
+          <input type="checkbox" name="learning_modes" value="online" checked />
+          <span>Online</span>
+        </label>
+        <label class="chip-option">
+          <input type="checkbox" name="learning_modes" value="offline" />
+          <span>Offline</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Thời gian học</label>
+      <div class="chip-group days-group">
+        <label class="chip-option"><input type="checkbox" name="learning_days" value="monday" checked /><span>Thứ 2</span></label>
+        <label class="chip-option"><input type="checkbox" name="learning_days" value="tuesday" /><span>Thứ 3</span></label>
+        <label class="chip-option"><input type="checkbox" name="learning_days" value="wednesday" /><span>Thứ 4</span></label>
+        <label class="chip-option"><input type="checkbox" name="learning_days" value="thursday" /><span>Thứ 5</span></label>
+        <label class="chip-option"><input type="checkbox" name="learning_days" value="friday" /><span>Thứ 6</span></label>
+        <label class="chip-option"><input type="checkbox" name="learning_days" value="saturday" /><span>Thứ 7</span></label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="detailed_description">Miêu tả chi tiết kỹ năng</label>
+      <textarea
+        name="detailed_description"
+        id="detailed_description"
+        placeholder="Mô tả chi tiết nội dung kỹ năng, cách dạy, đối tượng phù hợp..."
+        required
+      ></textarea>
+    </div>
+
+    <button type="submit">Đăng kỹ năng</button>
+  </form>
+
+  <p id="create-skill-message"></p>
+</section>
