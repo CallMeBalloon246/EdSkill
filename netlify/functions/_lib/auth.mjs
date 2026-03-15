@@ -56,13 +56,14 @@ export async function createSession(userId) {
 }
 
 export function buildSessionCookie(token) {
-  return `${SESSION_COOKIE}=${encodeURIComponent(token)}; Path=/; HttpOnly; SameSite=Lax; Max-Age=${60 * 60 * 24 * 7}; Secure`;
+  const secure = process.env.NODE_ENV === "production" ? "; Secure" : "";
+  return `edskill_session=${encodeURIComponent(token)}; Path=/; HttpOnly; SameSite=Lax; Max-Age=${60 * 60 * 24 * 7}${secure}`;
 }
 
 export function clearSessionCookie() {
-  return `${SESSION_COOKIE}=; Path=/; HttpOnly; SameSite=Lax; Max-Age=0; Secure`;
+  const secure = process.env.NODE_ENV === "production" ? "; Secure" : "";
+  return `edskill_session=; Path=/; HttpOnly; SameSite=Lax; Max-Age=0${secure}`;
 }
-
 export async function getCurrentUserFromRequest(req) {
   const cookies = parseCookies(req.headers.get("cookie") || "");
   const rawToken = cookies[SESSION_COOKIE];
