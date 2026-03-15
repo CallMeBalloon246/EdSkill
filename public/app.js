@@ -95,12 +95,21 @@ async function getJson(url) {
   };
 }
 
+function durationIndexToHours(index) {
+  const map = [0.5, 1.0, 1.5, 2.0];
+  return map[index] ?? 1.0;
+}
+
 function bindCreateSkillForm() {
   const form = document.getElementById("create-skill-form");
+  console.log("[create-skill] form =", form);
+
   if (!form) return;
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
+    console.log("[create-skill] submit intercepted");
+
     const message = document.getElementById("create-skill-message");
 
     const selectedModes = [...form.querySelectorAll('input[name="learning_modes"]:checked')]
@@ -120,27 +129,34 @@ function bindCreateSkillForm() {
       detailed_description: form.detailed_description.value.trim()
     };
 
-    const result = await postJson("/.netlify/functions/create-skill", payload);
+    console.log("[create-skill] payload =", payload);
 
-    if (result.ok) {
-      message.textContent = "Đăng kỹ năng thành công";
-      form.reset();
+    try {
+      const result = await postJson("/.netlify/functions/create-skill", payload);
+      console.log("[create-skill] result =", result);
 
-      const deliveryValue = document.getElementById("delivery_score_value");
-      const expertiseValue = document.getElementById("expertise_score_value");
-      const durationValue = document.getElementById("duration_value");
+      if (result.ok) {
+        message.textContent = "Đăng kỹ năng thành công";
+        form.reset();
 
-      if (deliveryValue) deliveryValue.textContent = "500";
-      if (expertiseValue) expertiseValue.textContent = "500";
-      if (durationValue) durationValue.textContent = "1h";
+        const deliveryValue = document.getElementById("delivery_score_value");
+        const expertiseValue = document.getElementById("expertise_score_value");
+        const durationValue = document.getElementById("duration_value");
 
-      loadMySkills();
-    } else {
-      message.textContent = result.data.error || "Không thể đăng kỹ năng";
+        if (deliveryValue) deliveryValue.textContent = "500";
+        if (expertiseValue) expertiseValue.textContent = "500";
+        if (durationValue) durationValue.textContent = "1h";
+
+        loadMySkills();
+      } else {
+        message.textContent = result.data.error || "Không thể đăng kỹ năng";
+      }
+    } catch (error) {
+      console.error("[create-skill] unexpected error", error);
+      message.textContent = "Có lỗi xảy ra khi đăng kỹ năng";
     }
   });
 }
-
 
 function bindLoginForm() {
   const form = document.getElementById("login-form");
