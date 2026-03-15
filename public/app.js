@@ -231,32 +231,93 @@ function bindLogout() {
   });
 }
 
+function durationIndexToHours(index) {
+  const map = [0.5, 1.0, 1.5, 2.0];
+  return map[index] ?? 1.0;
+}
+
 function bindCreateSkillForm() {
   const form = document.getElementById("create-skill-form");
+  console.log("[create-skill] form =", form);
+
   if (!form) return;
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
+    console.log("[create-skill] submit intercepted");
+
     const message = document.getElementById("create-skill-message");
 
+    const categoryInput = form.elements["category_id"];
+    const titleInput = form.elements["title"];
+    const deliveryInput = form.elements["delivery_score"];
+    const expertiseInput = form.elements["expertise_score"];
+    const durationInput = form.elements["duration_slider"];
+    const descriptionInput = form.elements["detailed_description"];
+
+    console.log("[create-skill] categoryInput =", categoryInput);
+    console.log("[create-skill] titleInput =", titleInput);
+    console.log("[create-skill] deliveryInput =", deliveryInput);
+    console.log("[create-skill] expertiseInput =", expertiseInput);
+    console.log("[create-skill] durationInput =", durationInput);
+    console.log("[create-skill] descriptionInput =", descriptionInput);
+
+    if (
+      !categoryInput ||
+      !titleInput ||
+      !deliveryInput ||
+      !expertiseInput ||
+      !durationInput ||
+      !descriptionInput
+    ) {
+      message.textContent = "Form đang thiếu field hoặc name không khớp với JavaScript.";
+      return;
+    }
+
+    const selectedModes = [...form.querySelectorAll('input[name="learning_modes"]:checked')]
+      .map((input) => input.value);
+
+    const selectedDays = [...form.querySelectorAll('input[name="learning_days"]:checked')]
+      .map((input) => input.value);
+
     const payload = {
-      category_id: Number(form.category_id.value),
-      title: form.title.value,
-      description: form.description.value,
-      level: form.level.value,
-      learning_mode: form.learning_mode.value,
-      price_per_session: Number(form.price_per_session.value || 0),
-      exchange_only: form.exchange_only.checked
+      category_id: Number(categoryInput.value),
+      title: titleInput.value.trim(),
+      delivery_score: Number(deliveryInput.value),
+      expertise_score: Number(expertiseInput.value),
+      session_duration_hours: durationIndexToHours(Number(durationInput.value)),
+      learning_modes: selectedModes,
+      learning_days: selectedDays,
+      detailed_description: descriptionInput.value.trim()
     };
 
-    const result = await postJson("/.netlify/functions/create-skill", payload);
+    console.log("[create-skill] payload =", payload);
 
-    if (result.ok) {
-      message.textContent = "Đăng kỹ năng thành công";
-      form.reset();
-      loadMySkills();
-    } else {
-      message.textContent = result.data.error || "Không thể đăng kỹ năng";
+    try {
+      const result = await postJson("/.netlify/functions/create-skill", payload);
+      console.log("[create-skill] result =", result);
+
+      if (result.ok) {
+        message.textContent = "Đăng kỹ năng thành công";
+        form.reset();
+
+        const deliveryValue = document.getElementById("delivery_score_value");
+        const expertiseValue = document.getElementById("expertise_score_value");
+        const durationValue = document.getElementById("duration_value");
+
+        if (deliveryValue) deliveryValue.textContent = "500";
+        if (expertiseValue) expertiseValue.textContent = "500";
+        if (durationValue) durationValue.textContent = "1h";
+
+        if (typeof loadMySkills === "function") {
+          loadMySkills();
+        }
+      } else {
+        message.textContent = result.data?.error || "Không thể đăng kỹ năng";
+      }
+    } catch (error) {
+      console.error("[create-skill] unexpected error", error);
+      message.textContent = "Có lỗi xảy ra khi đăng kỹ năng";
     }
   });
 }
