@@ -285,4 +285,15 @@ function init() {
   loadMySkills();
 }
 
+function init() {
+  if (typeof bindRegisterForm === "function") bindRegisterForm();
+  if (typeof bindLoginForm === "function") bindLoginForm();
+  if (typeof bindLogout === "function") bindLogout();
+  if (typeof bindCreateSkillForm === "function") bindCreateSkillForm();
+  if (typeof bindSkillFormSliders === "function") bindSkillFormSliders();
+  if (typeof loadCurrentUser === "function") loadCurrentUser();
+  if (typeof loadMySkills === "function") loadMySkills();
+  if (typeof loadSkills === "function") loadSkills();
+}
+
 init();
