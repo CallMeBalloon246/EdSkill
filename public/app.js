@@ -110,7 +110,26 @@ function bindCreateSkillForm() {
     e.preventDefault();
     console.log("[create-skill] submit intercepted");
 
+    const categoryInput = form.querySelector('[name="category_id"]');
+    const titleInput = form.querySelector('[name="title"]');
+    const deliveryInput = form.querySelector('[name="delivery_score"]');
+    const expertiseInput = form.querySelector('[name="expertise_score"]');
+    const durationInput = form.querySelector('[name="duration_slider"]');
+    const descriptionInput = form.querySelector('[name="detailed_description"]');
+
+    console.log("[create-skill] categoryInput =", categoryInput);
+    console.log("[create-skill] titleInput =", titleInput);
+    console.log("[create-skill] deliveryInput =", deliveryInput);
+    console.log("[create-skill] expertiseInput =", expertiseInput);
+    console.log("[create-skill] durationInput =", durationInput);
+    console.log("[create-skill] descriptionInput =", descriptionInput);
+
     const message = document.getElementById("create-skill-message");
+
+    if (!categoryInput || !titleInput || !deliveryInput || !expertiseInput || !durationInput || !descriptionInput) {
+      message.textContent = "Form đang thiếu field hoặc name không khớp với JavaScript.";
+      return;
+    }
 
     const selectedModes = [...form.querySelectorAll('input[name="learning_modes"]:checked')]
       .map(input => input.value);
@@ -118,15 +137,17 @@ function bindCreateSkillForm() {
     const selectedDays = [...form.querySelectorAll('input[name="learning_days"]:checked')]
       .map(input => input.value);
 
+    const durationMap = [0.5, 1.0, 1.5, 2.0];
+
     const payload = {
-      category_id: Number(form.category_id.value),
-      title: form.title.value.trim(),
-      delivery_score: Number(form.delivery_score.value),
-      expertise_score: Number(form.expertise_score.value),
-      session_duration_hours: durationIndexToHours(Number(form.duration_slider.value)),
+      category_id: Number(categoryInput.value),
+      title: titleInput.value.trim(),
+      delivery_score: Number(deliveryInput.value),
+      expertise_score: Number(expertiseInput.value),
+      session_duration_hours: durationMap[Number(durationInput.value)] ?? 1.0,
       learning_modes: selectedModes,
       learning_days: selectedDays,
-      detailed_description: form.detailed_description.value.trim()
+      detailed_description: descriptionInput.value.trim()
     };
 
     console.log("[create-skill] payload =", payload);
@@ -138,16 +159,6 @@ function bindCreateSkillForm() {
       if (result.ok) {
         message.textContent = "Đăng kỹ năng thành công";
         form.reset();
-
-        const deliveryValue = document.getElementById("delivery_score_value");
-        const expertiseValue = document.getElementById("expertise_score_value");
-        const durationValue = document.getElementById("duration_value");
-
-        if (deliveryValue) deliveryValue.textContent = "500";
-        if (expertiseValue) expertiseValue.textContent = "500";
-        if (durationValue) durationValue.textContent = "1h";
-
-        loadMySkills();
       } else {
         message.textContent = result.data.error || "Không thể đăng kỹ năng";
       }
