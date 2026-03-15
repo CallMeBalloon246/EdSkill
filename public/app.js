@@ -7,7 +7,38 @@ function durationIndexToLabel(index) {
   const map = ["0.5h", "1h", "1.5h", "2h"];
   return map[index] ?? "1h";
 }
+function bindRegisterForm() {
+  const form = document.getElementById("register-form");
+  if (!form) return;
 
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const message = document.getElementById("register-message");
+
+    const payload = {
+      full_name: form.full_name.value,
+      email: form.email.value,
+      password: form.password.value,
+      city: form.city.value,
+      bio: form.bio.value
+    };
+
+    try {
+      const result = await postJson("/.netlify/functions/register", payload);
+
+      if (result.ok) {
+        message.textContent = "Đăng ký thành công. Đang chuyển sang dashboard...";
+        window.location.assign("/dashboard.html");
+      } else {
+        message.textContent = result.data.error || "Đăng ký thất bại";
+      }
+    } catch (error) {
+      console.error(error);
+      message.textContent = "Có lỗi xảy ra khi đăng ký";
+    }
+  });
+}
 function bindSkillFormSliders() {
   const delivery = document.getElementById("delivery_score");
   const deliveryValue = document.getElementById("delivery_score_value");
