@@ -1,8 +1,11 @@
 {
-  "name": "edskill-static-site",
+  "name": "edskill-site",
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "build": "echo \"No build step required for static site\""
+    "start": "serve -s . -l $PORT"
+  },
+  "dependencies": {
+    "serve": "^14.2.4"
   }
 }
