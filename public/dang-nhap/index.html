@@ -22,17 +22,19 @@
           <h1>Đăng nhập tài khoản</h1>
           <p>Trang đăng nhập này gọi API backend để kiểm tra email và mật khẩu đã lưu trong Render Postgres.</p>
 
-          <form class="auth-form" id="loginForm">
-            <label>
-              <span>Email</span>
-              <input type="email" name="email" placeholder="ban@edskill.vn" required />
-            </label>
-            <label>
-              <span>Mật khẩu</span>
-              <input type="password" name="password" placeholder="••••••••" required />
-            </label>
-            <button type="submit" class="btn btn-primary btn-block">Đăng nhập</button>
-            <p class="form-message" id="loginMessage"></p>
+          <form id="loginForm" class="auth-form">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required />
+            </div>
+
+            <div class="form-group">
+              <label for="password">Mật khẩu</label>
+              <input type="password" id="password" name="password" required />
+            </div>
+
+            <button type="submit" class="btn btn-primary auth-submit">Đăng nhập</button>
+            <p id="formMessage" class="form-message"></p>
           </form>
 
           <div class="auth-links">
