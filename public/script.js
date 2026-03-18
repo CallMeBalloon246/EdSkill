@@ -1,13 +1,11 @@
 const mobileToggle = document.getElementById('mobileToggle');
-const mainNav = document.getElementById('mainNav');
+const mobileMenu = document.getElementById('mobileMenu');
 
-if (mobileToggle && mainNav) {
-  mobileToggle.addEventListener('click', () => {
-    mainNav.classList.toggle('open');
-    mobileToggle.classList.toggle('active');
+if (mobileToggle && mobileMenu) {
+  mobileToggle.addEventListener('click', function () {
+    mobileMenu.classList.toggle('show');
   });
 }
-
 document.querySelectorAll('.slider-btn').forEach((button) => {
   button.addEventListener('click', () => {
     const trackId = button.dataset.track;
@@ -187,5 +185,6 @@ function renderAuthUI() {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
+  console.log('DOMContentLoaded da chay');
   renderAuthUI();
 });
