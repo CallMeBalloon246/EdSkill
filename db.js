@@ -18,12 +18,20 @@ pool.on('error', (err) => {
   console.error('Postgres pool error:', {
     message: err.message,
     code: err.code,
+    detail: err.detail,
     stack: err.stack,
   });
 });
 
 async function testConnection() {
-  const result = await pool.query('SELECT NOW() AS connected_at, current_database() AS db_name, current_schema() AS schema_name');
+  const result = await pool.query(`
+    SELECT
+      NOW() AS connected_at,
+      current_database() AS database_name,
+      current_schema() AS schema_name,
+      to_regclass('public.users') AS users_table
+  `);
+
   return result.rows[0];
 }
 
