@@ -1,9 +1,11 @@
 services:
   - type: web
-    name: edskill-static
-    runtime: static
-    buildCommand: "true"
-    staticPublishPath: .
+    name: edskill-web
+    env: node
+    buildCommand: npm install
+    startCommand: npm start
     envVars:
-      - key: SKIP_INSTALL_DEPS
-        value: "true"
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        sync: false

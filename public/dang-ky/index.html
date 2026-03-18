@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Đăng ký - EdSkill</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="auth-page">
+      <div class="auth-shell container">
+        <a class="brand auth-brand" href="/">
+          <img src="https://png.pngtree.com/png-vector/20221126/ourmid/pngtree-modern-demo-logo-vector-png-image_6488040.png" alt="Logo EdSkill" />
+          <span>EdSkill</span>
+        </a>
+
+        <section class="auth-card">
+          <div class="section-pill">Bắt đầu cùng EdSkill</div>
+          <h1>Tạo tài khoản mới</h1>
+          <p>Tài khoản mới sẽ được lưu trực tiếp vào Render Postgres thông qua API backend. Mỗi người dùng có một mã định danh riêng.</p>
+
+          <form class="auth-form auth-form-grid" id="registerForm">
+            <label>
+              <span>Họ và tên</span>
+              <input type="text" name="fullName" placeholder="Nguyễn Văn A" required />
+            </label>
+            <label>
+              <span>Email</span>
+              <input type="email" name="email" placeholder="ban@edskill.vn" required />
+            </label>
+            <label>
+              <span>Mật khẩu</span>
+              <input type="password" name="password" placeholder="Tối thiểu 8 ký tự" minlength="8" required />
+            </label>
+            <label>
+              <span>Xác nhận mật khẩu</span>
+              <input type="password" name="confirmPassword" placeholder="Nhập lại mật khẩu" minlength="8" required />
+            </label>
+            <button type="submit" class="btn btn-primary btn-block">Đăng ký</button>
+            <p class="form-message" id="registerMessage"></p>
+          </form>
+
+          <div class="auth-links">
+            <a href="/dang-nhap">Đã có tài khoản? Đăng nhập</a>
+            <a href="/">Quay về trang chủ</a>
+          </div>
+        </section>
+      </div>
+    </main>
+      <script src="/script.js" defer></script>
+  </body>
+</html>
