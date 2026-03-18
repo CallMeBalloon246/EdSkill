@@ -103,9 +103,41 @@ app.post('/api/register', async (req, res) => {
       },
     });
   } catch (error) {
-    console.error('Lỗi /api/register:', error);
-    return res.status(500).json({ message: 'Đã có lỗi xảy ra khi tạo tài khoản.' });
+  console.error('Lỗi /api/register chi tiết:', {
+    message: error.message,
+    code: error.code,
+    detail: error.detail,
+    constraint: error.constraint,
+    schema: error.schema,
+    table: error.table,
+    column: error.column,
+    stack: error.stack,
+  });
+
+  if (error.code === '23505') {
+    if (String(error.constraint || '').includes('email')) {
+      return res.status(409).json({ message: 'Email này đã tồn tại.' });
+    }
+    if (String(error.constraint || '').includes('contact_number')) {
+      return res.status(409).json({ message: 'Số điện thoại này đã tồn tại.' });
+    }
+    return res.status(409).json({ message: 'Dữ liệu bị trùng với một tài khoản đã tồn tại.' });
   }
+
+  return res.status(500).json({
+    message: 'Không thể tạo tài khoản.',
+    debug:
+      process.env.NODE_ENV !== 'production'
+        ? {
+            code: error.code,
+            detail: error.detail,
+            rawMessage: error.message,
+            table: error.table,
+            column: error.column,
+          }
+        : undefined,
+  });
+}
 });
 
 app.post('/api/login', async (req, res) => {
