@@ -22,7 +22,7 @@ async function initializeDatabase() {
 
   await pool.query(`
     CREATE TABLE IF NOT EXISTS users (
-      id TEXT PRIMARY KEY,
+      user_id TEXT PRIMARY KEY,
       full_name VARCHAR(120) NOT NULL,
       email VARCHAR(255) NOT NULL UNIQUE,
       password_hash TEXT NOT NULL,
@@ -230,7 +230,7 @@ app.post('/api/login', async (req, res) => {
     }
 
     const result = await pool.query(
-      'SELECT id, full_name, email, password_hash, created_at FROM users WHERE email = $1 LIMIT 1',
+      'SELECT user_id, full_name, email, password_hash, created_at FROM users WHERE email = $1 LIMIT 1',
       [email]
     );
 
@@ -248,7 +248,7 @@ app.post('/api/login', async (req, res) => {
     return res.json({
       message: 'Đăng nhập thành công.',
       user: {
-        id: user.id,
+        id: user.user_id,
         fullName: user.full_name,
         email: user.email,
         createdAt: user.created_at,
