@@ -1,0 +1,5 @@
+services:
+  - type: web
+    name: edskill-static
+    runtime: static
+    staticPublishPath: .
