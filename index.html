@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EdSkill - Học kỹ năng theo cách hiện đại</title>
+    <meta
+      name="description"
+      content="EdSkill là nền tảng học kỹ năng theo mô hình hiện đại, kết nối kỹ năng sở thích, học thuật và bổ trợ công việc."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="site-header">
+        <div class="container nav-wrap">
+          <a class="brand" href="#home" aria-label="EdSkill Home">
+            <img
+              src="https://png.pngtree.com/png-vector/20221126/ourmid/pngtree-modern-demo-logo-vector-png-image_6488040.png"
+              alt="Logo EdSkill"
+            />
+            <span>EdSkill</span>
+          </a>
+
+          <button class="mobile-toggle" id="mobileToggle" aria-label="Mở menu điều hướng">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+
+          <nav class="main-nav" id="mainNav">
+            <ul class="nav-list">
+              <li class="nav-item has-dropdown">
+                <a href="#overview">Giới thiệu</a>
+                <div class="dropdown-panel">
+                  <a href="/gioi-thieu/edskill">Giới thiệu về EdSkill</a>
+                  <a href="/gioi-thieu/nha-sang-lap">Giới thiệu về nhà sáng lập</a>
+                  <a href="/gioi-thieu/gia-tri-xa-hoi">Giá trị cho xã hội</a>
+                </div>
+              </li>
+              <li class="nav-item has-dropdown">
+                <a href="#skills">Nhóm kỹ năng</a>
+                <div class="dropdown-panel">
+                  <a href="/ky-nang?nhom=so-thich">Kỹ năng sở thích</a>
+                  <a href="/ky-nang?nhom=hoc-thuat">Kỹ năng học thuật</a>
+                  <a href="/ky-nang?nhom=bo-tro-cong-viec">Kỹ năng bổ trợ công việc</a>
+                </div>
+              </li>
+              <li class="nav-item has-dropdown">
+                <a href="#enterprise">Giải pháp doanh nghiệp</a>
+                <div class="dropdown-panel">
+                  <a href="/doanh-nghiep/dao-tao-noi-bo">Đào tạo nội bộ</a>
+                  <a href="/doanh-nghiep/chuong-trinh-theo-nhu-cau">Chương trình kỹ năng theo nhu cầu</a>
+                  <a href="/doanh-nghiep/phat-trien-nhan-tai-tre">Hợp tác phát triển nhân tài trẻ</a>
+                </div>
+              </li>
+            </ul>
+            <div class="nav-actions">
+              <a class="btn btn-ghost" href="/dang-nhap">Đăng nhập</a>
+              <a class="btn btn-primary" href="/dang-ky">Đăng ký</a>
+            </div>
+          </nav>
+        </div>
+      </header>
+
+      <main id="home">
+        <section class="hero-section">
+          <div class="container hero-grid">
+            <div class="hero-copy">
+              <div class="section-pill">Nền tảng học kỹ năng toàn diện</div>
+              <div class="brand-word">EdSkill</div>
+              <h1>Học kỹ năng theo cách hiện đại, thực tế và truyền cảm hứng.</h1>
+              <p>
+                EdSkill kết nối kỹ năng sở thích, học thuật và bổ trợ công việc trong một hệ sinh thái học tập hiện đại.
+                Người học được dẫn dắt bằng lộ trình rõ ràng, dự án thực hành và trải nghiệm cá nhân hóa.
+              </p>
+              <div class="hero-actions">
+                <a class="btn btn-primary btn-large" href="/dang-ky">Đăng ký ngay</a>
+                <a class="btn btn-soft btn-large" href="#skills">Khám phá thêm</a>
+              </div>
+            </div>
+            <div class="hero-media">
+              <div class="hero-card hero-card-main">
+                <img
+                  src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&q=80"
+                  alt="Học viên EdSkill đang học tập và trao đổi kỹ năng"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="skills-section" id="skills">
+          <div class="container">
+            <div class="section-heading center">
+              <div class="section-pill">Nhóm kỹ năng nổi bật</div>
+              <h2>Kỹ năng được chia thành 3 nhóm phù hợp cho nhiều mục tiêu phát triển.</h2>
+              <p>
+                Từ sở thích cá nhân, năng lực học thuật đến kỹ năng hỗ trợ công việc, EdSkill thiết kế chương trình để người học có thể bắt đầu dễ dàng và tiến bộ bền vững.
+              </p>
+            </div>
+
+            <div class="skills-grid">
+              <article class="skill-card">
+                <div class="skill-top">
+                  <div class="skill-icon hobby">♪</div>
+                  <div class="skill-tag">Sở thích</div>
+                </div>
+                <h3>Guitar cơ bản</h3>
+                <p>Rèn tiết tấu, cảm âm và khả năng biểu đạt cảm xúc qua một lộ trình học trực quan, dễ tiếp cận.</p>
+              </article>
+
+              <article class="skill-card">
+                <div class="skill-top">
+                  <div class="skill-icon academic">✦</div>
+                  <div class="skill-tag">Học thuật</div>
+                </div>
+                <h3>Thiết kế tư duy học tập</h3>
+                <p>Xây nền tảng tự học, ghi nhớ và hệ thống hóa kiến thức để học nhanh hơn và sâu hơn.</p>
+              </article>
+
+              <article class="skill-card">
+                <div class="skill-top">
+                  <div class="skill-icon work">▣</div>
+                  <div class="skill-tag">Bổ trợ công việc</div>
+                </div>
+                <h3>Excel ứng dụng</h3>
+                <p>Làm chủ bảng tính, xử lý dữ liệu và tối ưu công việc văn phòng với tình huống thực tế.</p>
+              </article>
+
+              <article class="skill-card">
+                <div class="skill-top">
+                  <div class="skill-icon academic">✎</div>
+                  <div class="skill-tag">Học thuật</div>
+                </div>
+                <h3>Viết học thuật</h3>
+                <p>Phát triển kỹ năng lập luận, cấu trúc bài viết và cách trình bày ý tưởng mạch lạc, rõ ràng.</p>
+              </article>
+
+              <article class="skill-card">
+                <div class="skill-top">
+                  <div class="skill-icon work">◉</div>
+                  <div class="skill-tag">Bổ trợ công việc</div>
+                </div>
+                <h3>Thuyết trình tự tin</h3>
+                <p>Rèn giọng nói, ngôn ngữ cơ thể và kỹ thuật kể chuyện để giao tiếp chuyên nghiệp hơn.</p>
+              </article>
+
+              <article class="skill-card">
+                <div class="skill-top">
+                  <div class="skill-icon hobby">◌</div>
+                  <div class="skill-tag">Sở thích</div>
+                </div>
+                <h3>Nhiếp ảnh đời sống</h3>
+                <p>Khơi mở khả năng quan sát, bố cục và kể chuyện bằng hình ảnh với lộ trình thực hành rõ ràng.</p>
+              </article>
+            </div>
+
+            <div class="section-actions center-actions">
+              <a class="btn btn-primary" href="/dang-ky">Đăng ký ngay</a>
+              <a class="btn btn-soft" href="/ky-nang">Chi tiết</a>
+            </div>
+          </div>
+        </section>
+
+        <section class="carousel-section model-section" id="model">
+          <div class="container">
+            <div class="section-heading center">
+              <div class="section-pill">Mô hình học đổi mới</div>
+              <h2>EdSkill xây trải nghiệm học tập bằng nội dung thực tế và mô hình triển khai linh hoạt.</h2>
+              <p>
+                Các bài giới thiệu, nghiên cứu và định hướng của EdSkill được trình bày dưới dạng danh sách có thể trượt qua, giúp người dùng tiếp cận nội dung nhanh nhưng vẫn đủ chiều sâu.
+              </p>
+            </div>
+
+            <div class="feature-split">
+              <div class="slider-wrap">
+                <button class="slider-btn prev" data-track="modelTrack" aria-label="Trượt trái">‹</button>
+                <div class="slider-track" id="modelTrack">
+                  <article class="info-card slide-card">
+                    <h3>Học qua dự án ngắn hạn</h3>
+                    <p>Người học đi từ vấn đề thực tế đến sản phẩm đầu ra rõ ràng, giúp kỹ năng được hình thành nhanh và bền vững.</p>
+                    <a href="/bai-viet/hoc-qua-du-an-ngan-han">Đọc và xem chi tiết</a>
+                  </article>
+                  <article class="info-card slide-card">
+                    <h3>Thiết kế học tập cá nhân hóa</h3>
+                    <p>Lộ trình được chia theo năng lực đầu vào, mục tiêu và nhịp học của từng người để tối ưu trải nghiệm tiếp thu.</p>
+                    <a href="/bai-viet/thiet-ke-hoc-tap-ca-nhan-hoa">Đọc và xem chi tiết</a>
+                  </article>
+                  <article class="info-card slide-card">
+                    <h3>Đánh giá bằng năng lực ứng dụng</h3>
+                    <p>EdSkill đo kết quả qua khả năng vận dụng trong bối cảnh thật, không chỉ dừng ở ghi nhớ lý thuyết.</p>
+                    <a href="/bai-viet/danh-gia-bang-nang-luc-ung-dung">Đọc và xem chi tiết</a>
+                  </article>
+                </div>
+                <button class="slider-btn next" data-track="modelTrack" aria-label="Trượt phải">›</button>
+              </div>
+
+              <div class="feature-image feature-image-large">
+                <img
+                  src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80"
+                  alt="Mô hình học đổi mới tại EdSkill"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="carousel-section enterprise-section" id="enterprise">
+          <div class="container">
+            <div class="section-heading center">
+              <div class="section-pill">Giải pháp cho doanh nghiệp</div>
+              <h2>Sản phẩm và dịch vụ hỗ trợ doanh nghiệp phát triển đội ngũ bằng kỹ năng thực chiến.</h2>
+              <p>
+                EdSkill cung cấp các chương trình đồng hành với doanh nghiệp theo nhu cầu cụ thể, ưu tiên khả năng ứng dụng, đo lường và thích nghi nhanh với thực tế vận hành.
+              </p>
+            </div>
+
+            <div class="feature-split reverse">
+              <div class="feature-image feature-image-large">
+                <img
+                  src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80"
+                  alt="Giải pháp đào tạo và phát triển kỹ năng cho doanh nghiệp"
+                />
+              </div>
+
+              <div class="slider-wrap">
+                <button class="slider-btn prev" data-track="enterpriseTrack" aria-label="Trượt trái">‹</button>
+                <div class="slider-track" id="enterpriseTrack">
+                  <article class="info-card slide-card">
+                    <h3>Workshop kỹ năng nội bộ</h3>
+                    <p>Thiết kế workshop ngắn tập trung vào giao tiếp, phối hợp và khả năng tự học cho đội ngũ trẻ.</p>
+                    <a href="/doanh-nghiep/workshop-ky-nang-noi-bo">Đọc và xem chi tiết</a>
+                  </article>
+                  <article class="info-card slide-card">
+                    <h3>Lộ trình upskill theo phòng ban</h3>
+                    <p>Xây bộ kỹ năng sát nhu cầu từng bộ phận với cấu trúc đào tạo linh hoạt theo mục tiêu vận hành.</p>
+                    <a href="/doanh-nghiep/lo-trinh-upskill-theo-phong-ban">Đọc và xem chi tiết</a>
+                  </article>
+                  <article class="info-card slide-card">
+                    <h3>Phát triển nhân tài mới</h3>
+                    <p>Tăng tốc khả năng thích nghi và hiệu suất cho sinh viên thực tập, nhân sự mới và đội ngũ kế cận.</p>
+                    <a href="/doanh-nghiep/phat-trien-nhan-tai-moi">Đọc và xem chi tiết</a>
+                  </article>
+                </div>
+                <button class="slider-btn next" data-track="enterpriseTrack" aria-label="Trượt phải">›</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="testimonial-section" id="companions">
+          <div class="container">
+            <div class="section-heading center">
+              <div class="section-pill">Bạn đồng hành</div>
+              <h2>Một số đánh giá từ người học và cộng đồng đã đồng hành cùng EdSkill.</h2>
+              <p>
+                Phản hồi tập trung vào trải nghiệm học, khả năng ứng dụng và sự thay đổi thực tế sau quá trình tham gia chương trình kỹ năng.
+              </p>
+            </div>
+
+            <div class="testimonial-grid">
+              <article class="testimonial-card">
+                <img
+                  class="testimonial-image"
+                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=80"
+                  alt="Lan Anh"
+                />
+                <div class="testimonial-body">
+                  <div class="testimonial-head">
+                    <span class="person-name">Lan Anh</span>
+                    <span class="reviewer">Nguyễn Minh</span>
+                  </div>
+                  <h3>Thuyết trình tự tin</h3>
+                  <p>Mình không chỉ bớt sợ nói trước đám đông mà còn biết cách xây mạch nội dung rõ ràng. Khóa học rất thực tế và có tính ứng dụng ngay.</p>
+                </div>
+              </article>
+
+              <article class="testimonial-card">
+                <img
+                  class="testimonial-image"
+                  src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=80"
+                  alt="Quang Huy"
+                />
+                <div class="testimonial-body">
+                  <div class="testimonial-head">
+                    <span class="person-name">Quang Huy</span>
+                    <span class="reviewer">Phạm Hoài</span>
+                  </div>
+                  <h3>Excel ứng dụng</h3>
+                  <p>Các bài tập mô phỏng đúng công việc thực tế. Sau khóa học mình xử lý báo cáo nhanh hơn và tự tin hơn rất nhiều khi đi thực tập.</p>
+                </div>
+              </article>
+
+              <article class="testimonial-card">
+                <img
+                  class="testimonial-image"
+                  src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=900&q=80"
+                  alt="Mai Phương"
+                />
+                <div class="testimonial-body">
+                  <div class="testimonial-head">
+                    <span class="person-name">Mai Phương</span>
+                    <span class="reviewer">Trần An</span>
+                  </div>
+                  <h3>Viết học thuật</h3>
+                  <p>Điều mình thích nhất là cách giảng viên sửa bài rất chi tiết. Mình hiểu rõ hơn cách lập luận và trình bày một bài viết mạch lạc.</p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="overview-section" id="overview">
+          <div class="container">
+            <div class="section-heading center narrow">
+              <div class="section-pill">Tổng quan dự án EdSkill</div>
+              <h2>EdSkill theo đuổi một hệ sinh thái học tập giúp người học phát triển toàn diện và có giá trị cho xã hội.</h2>
+            </div>
+
+            <div class="overview-grid">
+              <div class="overview-item">
+                <div class="overview-icon">◔</div>
+                <h3>Mission</h3>
+                <p>Giúp người học tiếp cận kỹ năng theo cách hiện đại, ứng dụng được và tạo ra thay đổi tích cực trong học tập lẫn công việc.</p>
+              </div>
+              <div class="overview-item">
+                <div class="overview-icon">★★★★★</div>
+                <h3>Vision</h3>
+                <p>Trở thành hệ sinh thái học kỹ năng đáng tin cậy, nơi mỗi cá nhân đều có thể khám phá năng lực và phát triển bền vững.</p>
+              </div>
+              <div class="overview-item">
+                <div class="overview-icon">⬢</div>
+                <h3>Giá trị cốt lõi</h3>
+                <p>Thực tế, nhân bản, đổi mới và tạo tác động xã hội thông qua giáo dục kỹ năng có định hướng lâu dài.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <div class="container footer-grid">
+          <div class="footer-brand">
+            <a class="brand footer-brand-link" href="#home">
+              <img
+                src="https://png.pngtree.com/png-vector/20221126/ourmid/pngtree-modern-demo-logo-vector-png-image_6488040.png"
+                alt="Logo EdSkill"
+              />
+              <span>EdSkill</span>
+            </a>
+            <p class="company-name">Công ty Cổ phần Giáo dục Kỹ năng EdSkill</p>
+            <div class="social-list">
+              <a href="https://facebook.com" aria-label="Facebook">f</a>
+              <a href="https://linkedin.com" aria-label="LinkedIn">in</a>
+              <a href="https://google.com" aria-label="Google">G</a>
+              <a href="https://instagram.com" aria-label="Instagram">◎</a>
+            </div>
+          </div>
+
+          <div class="footer-links">
+            <div>
+              <h4>Giới thiệu</h4>
+              <a href="/gioi-thieu/edskill">Giới thiệu về EdSkill</a>
+              <a href="/gioi-thieu/nha-sang-lap">Giới thiệu về nhà sáng lập</a>
+              <a href="/gioi-thieu/gia-tri-xa-hoi">Giá trị cho xã hội</a>
+            </div>
+            <div>
+              <h4>Nhóm kỹ năng</h4>
+              <a href="/ky-nang?nhom=so-thich">Kỹ năng sở thích</a>
+              <a href="/ky-nang?nhom=hoc-thuat">Kỹ năng học thuật</a>
+              <a href="/ky-nang?nhom=bo-tro-cong-viec">Kỹ năng bổ trợ công việc</a>
+            </div>
+            <div>
+              <h4>Doanh nghiệp</h4>
+              <a href="/doanh-nghiep/dao-tao-noi-bo">Đào tạo nội bộ</a>
+              <a href="/doanh-nghiep/chuong-trinh-theo-nhu-cau">Chương trình theo nhu cầu</a>
+              <a href="/doanh-nghiep/phat-trien-nhan-tai-tre">Phát triển nhân tài trẻ</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      const mobileToggle = document.getElementById('mobileToggle');
+      const mainNav = document.getElementById('mainNav');
+
+      mobileToggle.addEventListener('click', () => {
+        mainNav.classList.toggle('open');
+        mobileToggle.classList.toggle('active');
+      });
+
+      document.querySelectorAll('.slider-btn').forEach((button) => {
+        button.addEventListener('click', () => {
+          const track = document.getElementById(button.dataset.track);
+          const amount = track.clientWidth * 0.85;
+          if (button.classList.contains('next')) {
+            track.scrollBy({ left: amount, behavior: 'smooth' });
+          } else {
+            track.scrollBy({ left: -amount, behavior: 'smooth' });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
