@@ -43,5 +43,53 @@
       </div>
     </main>
       <script src="/script.js" defer></script>
+      <script>
+  const loginForm = document.getElementById('loginForm');
+  const formMessage = document.getElementById('formMessage');
+
+  loginForm.addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    formMessage.textContent = '';
+    formMessage.className = 'form-message';
+
+    const email = document.getElementById('email').value.trim();
+    const password = document.getElementById('password').value;
+
+    try {
+      const response = await fetch('/api/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          email: email,
+          password: password
+        })
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        formMessage.textContent = data.message || 'Không thể đăng nhập.';
+        formMessage.classList.add('error');
+        return;
+      }
+
+      localStorage.setItem('edskillUser', JSON.stringify(data.user));
+
+      formMessage.textContent = 'Đăng nhập thành công. Đang chuyển hướng...';
+      formMessage.classList.add('success');
+
+      setTimeout(function () {
+        window.location.href = '/';
+      }, 800);
+    } catch (error) {
+      formMessage.textContent = 'Đã có lỗi xảy ra khi đăng nhập.';
+      formMessage.classList.add('error');
+      console.error('Lỗi đăng nhập:', error);
+    }
+  });
+</script>
   </body>
 </html>
