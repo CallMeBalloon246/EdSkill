@@ -22,10 +22,10 @@
           <h1>Đăng nhập tài khoản</h1>
           <p>Trang đăng nhập này gọi API backend để kiểm tra email và mật khẩu đã lưu trong Render Postgres.</p>
 
-          <form id="loginForm" class="auth-form">
+          <form id="loginForm" class="auth-form" method="post" action="/api/login">
             <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required />
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required />
             </div>
 
             <div class="form-group">
@@ -44,7 +44,6 @@
         </section>
       </div>
     </main>
-      <script src="/script.js" defer></script>
       <script>
   const loginForm = document.getElementById('loginForm');
   const formMessage = document.getElementById('formMessage');
@@ -92,6 +91,7 @@
       console.error('Lỗi đăng nhập:', error);
     }
   });
-</script>
+  </script>
+  <script src="/script.js"></script>
   </body>
 </html>
