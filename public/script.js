@@ -72,6 +72,100 @@ function renderAuthUI() {
   }
 }
 
+function bindRegisterForm() {
+  const registerForm = document.getElementById('registerForm');
+  const formMessage = document.getElementById('formMessage');
+  if (!registerForm || !formMessage) return;
+
+  registerForm.addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    formMessage.textContent = '';
+    formMessage.className = 'form-message';
+
+    const payload = {
+      fullName: document.getElementById('fullName')?.value.trim() || '',
+      email: document.getElementById('email')?.value.trim() || '',
+      password: document.getElementById('password')?.value || '',
+      confirmPassword: document.getElementById('confirmPassword')?.value || ''
+    };
+
+    try {
+      const response = await fetch('/api/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        formMessage.textContent = data.message || 'Không thể tạo tài khoản.';
+        formMessage.classList.add('error');
+        return;
+      }
+
+      formMessage.textContent = 'Đăng ký thành công. Mời bạn đăng nhập.';
+      formMessage.classList.add('success');
+
+      setTimeout(function () {
+        window.location.href = '/dang-nhap';
+      }, 900);
+    } catch (error) {
+      formMessage.textContent = 'Đã có lỗi xảy ra khi tạo tài khoản.';
+      formMessage.classList.add('error');
+      console.error(error);
+    }
+  });
+}
+
+function bindLoginForm() {
+  const loginForm = document.getElementById('loginForm');
+  const formMessage = document.getElementById('formMessage');
+  if (!loginForm || !formMessage) return;
+
+  loginForm.addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    formMessage.textContent = '';
+    formMessage.className = 'form-message';
+
+    const payload = {
+      email: document.getElementById('email')?.value.trim() || '',
+      password: document.getElementById('password')?.value || ''
+    };
+
+    try {
+      const response = await fetch('/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        formMessage.textContent = data.message || 'Không thể đăng nhập.';
+        formMessage.classList.add('error');
+        return;
+      }
+
+      localStorage.setItem('edskillUser', JSON.stringify(data.user));
+
+      formMessage.textContent = 'Đăng nhập thành công. Đang chuyển hướng...'; 
+      formMessage.classList.add('success');
+
+      setTimeout(function () {
+        window.location.href = '/';
+      }, 800);
+    } catch (error) {
+      formMessage.textContent = 'Đã có lỗi xảy ra khi đăng nhập.';
+      formMessage.classList.add('error');
+      console.error(error);
+    }
+  });
+}
+
 document.addEventListener('DOMContentLoaded', function () {
   const mobileToggle = document.getElementById('mobileToggle');
   const mobileMenu = document.getElementById('mobileMenu');
@@ -83,4 +177,6 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   renderAuthUI();
+  bindRegisterForm();
+  bindLoginForm();
 });
