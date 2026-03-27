@@ -10,40 +10,46 @@
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
-    <main class="auth-page">
-      <div class="auth-shell container">
-        <a class="brand auth-brand" href="/">
-          <img src="https://png.pngtree.com/png-vector/20221126/ourmid/pngtree-modern-demo-logo-vector-png-image_6488040.png" alt="Logo EdSkill" />
-          <span>EdSkill</span>
-        </a>
-
-        <section class="auth-card">
-          <div class="section-pill">Chào mừng quay lại</div>
-          <h1>Đăng nhập tài khoản</h1>
-          <p>Trang đăng nhập này gọi API backend để kiểm tra email và mật khẩu đã lưu trong Render Postgres.</p>
-
-          <form id="loginForm" class="auth-form">
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" id="email" name="email" required />
-            </div>
-
-            <div class="form-group">
-              <label for="password">Mật khẩu</label>
-              <input type="password" id="password" name="password" required />
-            </div>
-
-            <button type="submit" class="btn btn-primary auth-submit">Đăng nhập</button>
-            <p id="formMessage" class="form-message"></p>
-          </form>
-
-          <div class="auth-links">
-            <a href="/dang-ky">Chưa có tài khoản? Đăng ký</a>
-            <a href="/">Quay về trang chủ</a>
-          </div>
-        </section>
+      <main class="auth-shell">
+    <section class="auth-split-card">
+      <div class="auth-visual-panel">
+        <div class="auth-visual-image auth-visual-login"></div>
       </div>
-    </main>
+
+      <div class="auth-form-panel">
+        <div class="auth-form-box">
+          <div class="auth-badge">Chào mừng quay lại</div>
+          <h1 class="auth-title">Đăng nhập tài khoản</h1>
+          <p class="auth-subtitle">
+            Tiếp tục hành trình học tập của em với hệ sinh thái kỹ năng EdSkill.
+          </p>
+
+          <form id="loginForm" class="modern-auth-form">
+            <div class="modern-form-grid single-column">
+              <div class="modern-form-group full-span">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Nhập email" required />
+              </div>
+
+              <div class="modern-form-group full-span">
+                <label for="password">Mật khẩu</label>
+                <input type="password" id="password" name="password" placeholder="Nhập mật khẩu" required />
+              </div>
+            </div>
+
+            <p id="formMessage" class="form-message"></p>
+
+            <button type="submit" class="modern-auth-submit">Đăng nhập</button>
+
+            <div class="auth-bottom-links">
+              <a href="/dang-ky">Chưa có tài khoản? Đăng ký</a>
+              <a href="/">Quay về trang chủ</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
       <script>
   const loginForm = document.getElementById('loginForm');
   const formMessage = document.getElementById('formMessage');
