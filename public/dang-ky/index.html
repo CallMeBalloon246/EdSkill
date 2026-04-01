@@ -3,101 +3,57 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Đăng nhập - EdSkill</title>
+    <title>Đăng ký - EdSkill</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
-      <main class="auth-shell">
-    <section class="auth-split-card">
-      <div class="auth-visual-panel">
-        <div class="auth-visual-image auth-visual-login"></div>
-      </div>
+    <main class="auth-page">
+      <div class="auth-shell container">
+        <a class="brand auth-brand" href="/">
+          <img src="https://png.pngtree.com/png-vector/20221126/ourmid/pngtree-modern-demo-logo-vector-png-image_6488040.png" alt="Logo EdSkill" />
+          <span>EdSkill</span>
+        </a>
 
-      <div class="auth-form-panel">
-        <div class="auth-form-box">
-          <div class="auth-badge">Chào mừng quay lại</div>
-          <h1 class="auth-title">Đăng nhập tài khoản</h1>
-          <p class="auth-subtitle">
-            Tiếp tục hành trình học tập của em với hệ sinh thái kỹ năng EdSkill.
-          </p>
+        <section class="auth-card">
+          <div class="section-pill">Bắt đầu cùng EdSkill</div>
+          <h1>Tạo tài khoản mới</h1>
+          <p>Tài khoản mới sẽ được lưu trực tiếp vào Render Postgres thông qua API backend. Mỗi người dùng có một mã định danh riêng.</p>
 
-          <form id="loginForm" class="modern-auth-form">
-            <div class="modern-form-grid single-column">
-              <div class="modern-form-group full-span">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="Nhập email" required />
-              </div>
-
-              <div class="modern-form-group full-span">
-                <label for="password">Mật khẩu</label>
-                <input type="password" id="password" name="password" placeholder="Nhập mật khẩu" required />
-              </div>
+          <form id="registerForm" class="auth-form">
+            <div class="form-group">
+              <label for="fullName">Họ và tên</label>
+              <input type="text" id="fullName" name="fullName" required />
             </div>
 
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+
+            <div class="form-group">
+              <label for="password">Mật khẩu</label>
+              <input type="password" id="password" name="password" required />
+            </div>
+
+            <div class="form-group">
+             <label for="confirmPassword">Xác nhận mật khẩu</label>
+              <input type="password" id="confirmPassword" name="confirmPassword" required />
+            </div>
+
+            <button type="submit" class="btn btn-primary auth-submit">Đăng ký</button>
             <p id="formMessage" class="form-message"></p>
-
-            <button type="submit" class="modern-auth-submit">Đăng nhập</button>
-
-            <div class="auth-bottom-links">
-              <a href="/dang-ky">Chưa có tài khoản? Đăng ký</a>
-              <a href="/">Quay về trang chủ</a>
-            </div>
           </form>
-        </div>
+
+          <div class="auth-links">
+            <a href="/dang-nhap">Đã có tài khoản? Đăng nhập</a>
+            <a href="/">Quay về trang chủ</a>
+          </div>
+        </section>
       </div>
-    </section>
-  </main>
-      <script>
-  const loginForm = document.getElementById('loginForm');
-  const formMessage = document.getElementById('formMessage');
-
-  loginForm.addEventListener('submit', async function (e) {
-    e.preventDefault();
-
-    formMessage.textContent = '';
-    formMessage.className = 'form-message';
-
-    const email = document.getElementById('email').value.trim();
-    const password = document.getElementById('password').value;
-
-    try {
-      const response = await fetch('/api/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          email: email,
-          password: password
-        })
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        formMessage.textContent = data.message || 'Không thể đăng nhập.';
-        formMessage.classList.add('error');
-        return;
-      }
-
-      localStorage.setItem('edskillUser', JSON.stringify(data.user));
-
-      formMessage.textContent = 'Đăng nhập thành công. Đang chuyển hướng...';
-      formMessage.classList.add('success');
-
-      setTimeout(function () {
-        window.location.href = '/';
-      }, 800);
-    } catch (error) {
-      formMessage.textContent = 'Đã có lỗi xảy ra khi đăng nhập.';
-      formMessage.classList.add('error');
-      console.error('Lỗi đăng nhập:', error);
-    }
-  });
-  </script>
-  <script src="/script.js"></script>
+    </main>
+      <script src="/script.js"></script>
   </body>
 </html>
