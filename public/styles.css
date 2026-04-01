@@ -1046,7 +1046,7 @@ img {
 }
 
 .auth-visual-panel {
-  display: flex;
+  display: center;
 }
 
 .auth-visual-image {
